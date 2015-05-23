@@ -1,5 +1,9 @@
-#!/do/not/run/this/on/linux/since/it/is/a/windows/batch/file 2>nul
+#!/bin/sh
+exec /bin/bash "$(dirname "$0")"/bootinst.sh
+exec /bin/sh "$(dirname "$0")"/bootinst.sh
+
 @echo off
+COLOR 2F
 cls
 echo ===============================================================================
 echo.
@@ -12,8 +16,6 @@ echo                                 \/           \/      \/
 echo.
 echo ===============================================================================
 echo.
-
-COLOR 2F
 
 set DISK=none
 set BOOTFLAG=boot666s.tmp
@@ -90,6 +92,8 @@ echo.
 echo Error: can't discover current drive letter
 
 :pauseit
+if "%1" == "auto" goto end
+
 echo.
 echo Press any key...
 pause > nul
