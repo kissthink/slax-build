@@ -8,6 +8,7 @@
     "Persistent changes",
     "Graphical desktop",
     "Copy to RAM",
+    "Act as PXE server",
     );
 
     function slaxflags($label)
@@ -16,6 +17,7 @@
        if (substr($label,0,1)==1) $flags[]='perch';
        if (substr($label,1,1)==1) $flags[]='xmode';
        if (substr($label,2,1)==1) $flags[]='toram';
+       if (substr($label,3,1)==1) $flags[]='pxe';
        return join(",",$flags);
     }
 
@@ -35,7 +37,7 @@
        $flags=preg_split("{}",$label,$c+2);
        array_shift($flags);
        echo "MENU BEGIN $label\n";
-       if ($label=='1101') echo "   MENU START\n";
+       if ($label=='11001') echo "   MENU START\n";
        echo "   LABEL default\n";
        echo "   MENU LABEL Run Slax\n";
        echo "   KERNEL /boot/vmlinuz\n";
